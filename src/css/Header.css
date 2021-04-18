@@ -1,0 +1,23 @@
+.row {
+    border: 2px solid rgb(48, 116, 143);
+    background-color: skyblue;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    
+}
+
+.title-bold {
+    color: white;
+}
+
+.search-box {
+    background-color: lightgray; 
+    width: 300px;
+}
+
+.search-button {
+    color: white;
+    margin-left: 10px;
+}
+

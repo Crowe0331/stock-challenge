@@ -1,23 +1,48 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import StockInfoLoading from './components/StockInfoLoading';
+import Header from './components/Header';
+import StockCardContainer from './components/StockCardContainer';
 import './App.css';
 
 function App() {
+  
+  const StocksLoading = StockInfoLoading();
+  const [stock, setStock] = useState({
+    loading: false,
+    stocks: null
+  });
+
+  const [searchInput, setSearchInput] = useState("");
+
+  const fetchStock = async (searchInput) => {
+    const API_Key = 'FJOVNCNCVRYXKXQS';
+    const API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${searchInput}&outputsize=compact&apikey=${API_Key}`;
+  
+    const res = await fetch(API_Call);
+    const resJson = await res.json();
+    console.log(resJson);
+  
+    if(resJson.Search) {
+      setStock(resJson.Search)
+    }
+  }
+
+  useEffect(() => {
+    fetchStock(searchInput);
+  }, [searchInput]);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header 
+        className="search-box-component"
+          searchInput = { searchInput } 
+          setSearchInput = { setSearchInput }
+      />
+      <div>
+        <StockCardContainer />
+      </div>
+      
     </div>
   );
 }
