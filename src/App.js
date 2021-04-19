@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import StockInfoLoading from './components/StockInfoLoading';
 import Header from './components/Header';
 import StockCardContainer from './components/StockCardContainer';
 import './App.css';
 
 function App() {
   
-  const StocksLoading = StockInfoLoading();
-  const [stock, setStock] = useState({
-    loading: false,
-    stocks: null
-  });
 
   const [searchInput, setSearchInput] = useState("");
 
@@ -20,11 +14,11 @@ function App() {
   
     const res = await fetch(API_Call);
     const resJson = await res.json();
+
+    //Will result in the searched stock information to be logged to the console
     console.log(resJson);
   
-    if(resJson.Search) {
-      setStock(resJson.Search)
-    }
+    
   }
 
   useEffect(() => {
@@ -40,7 +34,7 @@ function App() {
           setSearchInput = { setSearchInput }
       />
       <div>
-        <StockCardContainer />
+        <StockCardContainer></StockCardContainer>
       </div>
       
     </div>

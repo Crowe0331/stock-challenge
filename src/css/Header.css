@@ -9,6 +9,12 @@
 
 .title-bold {
     color: white;
+    float: left;
+}
+
+.search-container {
+    background-color: black;
+    align-items: center;
 }
 
 .search-box {
@@ -19,5 +25,6 @@
 .search-button {
     color: white;
     margin-left: 10px;
+    
 }
 
