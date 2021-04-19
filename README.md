@@ -1,5 +1,7 @@
 # Stock Application - Alpha Vantage PAI
 
+Also check out: Stock Chart based on Ticker Symbols -  https://github.com/Crowe0331/stock-chart-application
+
 This is a dynamic stock application, in whcih, a user can input a ticker symbol in the search bar and the stock's highest three days and the lowest days out of the last 100 days wil appear in card components. 
 
 ### Alpha Vantage API
